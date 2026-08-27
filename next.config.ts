@@ -3,15 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
-    optimizePackageImports: ["framer-motion", "gsap", "@react-three/fiber", "@react-three/drei"],
-  },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.(glsl|vs|fs|vert|frag)$/,
-      use: ["raw-loader", "glslify-loader"],
-      exclude: /node_modules/,
-    });
-    return config;
+    optimizePackageImports: ["framer-motion", "gsap"],
   },
   images: {
     formats: ["image/avif", "image/webp"],
