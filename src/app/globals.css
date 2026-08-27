@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────────── */
+@theme {
+  /* Surfaces */
+  --color-cream:      #F5F0E8;
+  --color-cream-2:    #EDE6D8;
+  --color-cream-dark: #E5DDD0;
+
+  /* Ink */
+  --color-ink:        #1C1C1A;
+  --color-ink-mid:    rgba(28, 28, 26, 0.55);
+  --color-ink-soft:   rgba(28, 28, 26, 0.45);
+  --color-ink-mute:   rgba(28, 28, 26, 0.35);
+  --color-ink-faint:  rgba(28, 28, 26, 0.30);
+
+  /* Gold accent — used sparingly */
+  --color-gold:       #8B6914;
+  --color-gold-light: #B8960C;
+
+  /* Border */
+  --color-border:     rgba(28, 28, 26, 0.10);
+  --color-border-mid: rgba(28, 28, 26, 0.16);
+
+  /* ── Semantic aliases (keep existing refs working) ── */
+  --color-linen:        var(--color-cream);
+  --color-sand:         var(--color-cream-2);
+  --color-stone:        var(--color-cream-dark);
+  --color-parchment:    var(--color-cream-dark);
+  --color-sable:        var(--color-ink);
+  --color-sable-mid:    var(--color-ink-mid);
+  --color-sable-muted:  var(--color-ink-soft);
+  --color-sable-ghost:  var(--color-ink-faint);
+  --color-sage:         var(--color-gold);
+  --color-sage-deep:    #5A440E;
+  --color-sage-pale:    var(--color-gold-light);
+  --color-ochre:        var(--color-gold);
+  --color-ochre-light:  var(--color-gold-light);
+  --color-ochre-pale:   var(--color-gold-light);
+  --color-moss:         #1C1C1A;
+  --color-line:         var(--color-border);
+  --color-line-dark:    var(--color-border-mid);
+  --color-rule:         var(--color-border);
+  --color-rule-dark:    var(--color-border-mid);
+  --color-ink-soft-px:  rgba(28, 28, 26, 0.45);
+
+  /* Type */
+  --font-serif:  "Cormorant Garamond", Georgia, serif;
+  --font-sans:   "DM Sans", system-ui, sans-serif;
+  --font-mono:   "DM Sans", system-ui, sans-serif;
+
+  /* Easing */
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart:  cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto;
+  background-color: var(--color-cream);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(139, 105, 20, 0.15); color: var(--color-ink); }
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--color-cream-2); }
+::-webkit-scrollbar-thumb { background: var(--color-cream-dark); }
+
+/* ─── Lenis ─────────────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ─── Editorial utilities ───────────────────────────────────────── */
+.rule       { border-top: 1px solid var(--color-border); }
+.rule-dark  { border-top: 1px solid var(--color-border-mid); }
+
+.tracked-editorial { letter-spacing: 0.18em; }
+.tracked-wide      { letter-spacing: 0.12em; }
+.tracked-loose     { letter-spacing: 0.06em; }
+
+/* Lift tiny labels */
+.text-\[8px\]  { font-size: 11px !important; }
+.text-\[9px\]  { font-size: 11px !important; }
+.text-\[10px\] { font-size: 11px !important; }
+
+/* Quiet arch frame */
+.frame-arch {
+  border-top-left-radius: 50% 26%;
+  border-top-right-radius: 50% 26%;
+  overflow: hidden;
+}
+
+/* Ken-Burns */
+.ken-burns-wrap { overflow: hidden; }
+.ken-burns-wrap .img-inner {
+  transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1.05);
+  will-change: transform;
+}
+.ken-burns-wrap:hover .img-inner { transform: scale(1.0); }
+
+.parallax-img { will-change: transform; transform-origin: center center; }
+
+/* Hero vignette */
+.hero-vignette {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(28, 28, 26, 0.28) 0%,
+      rgba(28, 28, 26, 0.08) 40%,
+      rgba(28, 28, 26, 0.08) 60%,
+      rgba(28, 28, 26, 0.42) 100%
+    );
+}
+
+.sticky-bar-blur {
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+/* Line-reveal mask helper */
+.reveal-line { overflow: hidden; display: block; }
+
+/* Scroll-reveal utility */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.33,1,0.68,1), transform 700ms cubic-bezier(0.33,1,0.68,1);
+}
+.scroll-fade.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-fade { opacity: 1; transform: none; }
+}
