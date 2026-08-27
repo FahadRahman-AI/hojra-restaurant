@@ -41,7 +41,7 @@ export default function VisitSection({ onReserve }: { onReserve: () => void }) {
             }}
           >
             Hojra Restaurant<br />
-            Sparkhill, Birmingham<br />
+            Hall Green, Birmingham<br />
             West Midlands
           </p>
           <p

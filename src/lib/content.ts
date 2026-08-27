@@ -5,10 +5,10 @@ export const businessInfo = {
   name: "Hojra Restaurant",
   tagline: "Authentic Afghan & Pakistani Cuisine",
   // NOTE: exact street number not verifiable online (Google Maps behind a
-  // consent wall). Coordinates 52.4218291, -1.8371591 sit in the Sparkhill
+  // consent wall). Coordinates 52.4218291, -1.8371591 sit in the Hall Green
   // area of Birmingham. Owner to confirm the exact street line below.
   addressLine1: "Hojra Restaurant",
-  addressStreet: "Sparkhill, Birmingham",
+  addressStreet: "Hall Green, Birmingham",
   addressLine3: "West Midlands, UK",
   phoneDisplay: "0121 714 0438",
   phoneHref: "tel:+441217140438",
