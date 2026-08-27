@@ -122,7 +122,7 @@ export default function StorySection() {
             >
               {[
                 { year: "2020", detail: "Founded in Birmingham with a single room and a wood-fired tandoor." },
-                { year: "Heritage", detail: "Recipes from Punjab, Sindh and Karachi — carried with precision and care." },
+                { year: "Heritage", detail: "Recipes from Peshawar, Lahore and Kabul — carried with precision and care." },
                 { year: "Today", detail: "A place for families, celebrations and long evenings in the heart of Birmingham." },
               ].map((item) => (
                 <div key={item.year} className="flex gap-8 items-start">
